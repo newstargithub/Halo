@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--分隔线-->
+    <color name="black_divider">#1F000000</color>
+    <!--禁用状态/提示文字-->
+    <color name="black_hint_text">#42000000</color>
+    <!--减淡文字-->
+    <color name="black_second_text">#8A000000</color>
+    <!--普通文字-->
+    <color name="black_text">#DE000000</color>
+
+    <color name="white_divider">#1FFFFFFF</color>
+    <color name="white_hint_text">#4DFFFFFF</color>
+    <color name="white_second_text">#B3FFFFFF</color>
+    <color name="white_text">#FFFFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#B3FFFFFF</color>
+
+
+</resources>
