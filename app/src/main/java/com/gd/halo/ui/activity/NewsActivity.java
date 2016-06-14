@@ -29,7 +29,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NewsActivity extends AppCompatActivity implements NewsFragment.OnListFragmentInteractionListener {
+public class NewsActivity extends AppCompatActivity implements NewsFragment.OnNewsItemClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -127,7 +127,7 @@ public class NewsActivity extends AppCompatActivity implements NewsFragment.OnLi
     }
 
     @Override
-    public void onListFragmentInteraction(NewsBean item) {
+    public void OnNewsItemClick(NewsBean item) {
 
     }
 

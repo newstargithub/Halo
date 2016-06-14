@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.gd.halo.R;
 import com.gd.halo.bean.Posts;
-import com.gd.halo.ui.fragment.NewsFragment.OnListFragmentInteractionListener;
+import com.gd.halo.ui.fragment.NewsFragment.OnNewsItemClickListener;
 import com.gd.halo.ui.fragment.ZhiHuFragment;
 import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link OnNewsItemClickListener}.
  * 知乎列表.
  */
 public class ZhiHuAdapter extends RecyclerView.Adapter<ZhiHuAdapter.ViewHolder> {

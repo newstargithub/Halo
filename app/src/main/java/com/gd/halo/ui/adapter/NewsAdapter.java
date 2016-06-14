@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.gd.halo.R;
 import com.gd.halo.bean.NewsBean;
-import com.gd.halo.ui.fragment.NewsFragment.OnListFragmentInteractionListener;
+import com.gd.halo.ui.fragment.NewsFragment.OnNewsItemClickListener;
 import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -18,15 +18,15 @@ import butterknife.ButterKnife;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link OnNewsItemClickListener}.
  * 新闻列表.
  */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private final List<NewsBean> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnNewsItemClickListener mListener;
 
-    public NewsAdapter(List<NewsBean> items, OnListFragmentInteractionListener listener) {
+    public NewsAdapter(List<NewsBean> items, OnNewsItemClickListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -48,7 +48,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.OnNewsItemClick(holder.mItem);
                 }
             }
         });

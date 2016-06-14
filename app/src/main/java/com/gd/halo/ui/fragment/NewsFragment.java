@@ -29,7 +29,7 @@ import okhttp3.Response;
 /**
  * A fragment representing a list of Items.
  * <p />
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnNewsItemClickListener}
  * interface.
  */
 public class NewsFragment extends LazyFragment {
@@ -44,7 +44,7 @@ public class NewsFragment extends LazyFragment {
     private static final String ARG_TITLE = "title";
     private static final String ARG_URL = "url";
 
-    private OnListFragmentInteractionListener mListener;
+    private OnNewsItemClickListener mListener;
     private NewsAdapter mNewsAdapter;
     private List<NewsBean> mList = new ArrayList<>();
     @Bind(R.id.list)
@@ -88,11 +88,11 @@ public class NewsFragment extends LazyFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnNewsItemClickListener) {
+            mListener = (OnNewsItemClickListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnNewsItemClickListener");
         }
     }
 
@@ -143,7 +143,7 @@ public class NewsFragment extends LazyFragment {
         .tag(this)
         .cacheKey(mUrl)            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
         .cacheMode(CacheMode.DEFAULT)    // 缓存模式，详细请看缓存介绍
-        .execute(new DialogCallback<List<NewsBean>>(getActivity()){
+        .execute(new DialogCallback<List<NewsBean>>(getActivity()) {
             @Override
             public List<NewsBean> parseNetworkResponse(Response response) throws Exception {
                 return SAXNewsParse.parse(response.body().byteStream());
@@ -151,7 +151,7 @@ public class NewsFragment extends LazyFragment {
 
             @Override
             public void onResponse(boolean isFromCache, List<NewsBean> newsBeen, Request request, @Nullable Response response) {
-                if(newsBeen != null) {
+                if (newsBeen != null) {
                     mList.addAll(newsBeen);
                     mNewsAdapter.notifyDataSetChanged();
                 }
@@ -175,8 +175,8 @@ public class NewsFragment extends LazyFragment {
      * >Communicating with Other Fragments</a> for more information.
      *  这个接口必须被包含此fragment的activities实现，以允许fragment与activity交互
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnNewsItemClickListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(NewsBean item);
+        void OnNewsItemClick(NewsBean item);
     }
 }

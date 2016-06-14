@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        NewsFragment.OnListFragmentInteractionListener,
+        NewsFragment.OnNewsItemClickListener,
         ZhiHuFragment.OnZhiHuItemClickListener {
 
     private static final String FRAGMENT_TAG_NEWS = "fragment_tag_news";
@@ -68,7 +68,8 @@ public class MainActivity extends AppCompatActivity
 
         mContext = this;
         ButterKnife.bind(this);
-        setDefaultFragment(getTableNewsFragment(), FRAGMENT_TAG_NEWS);
+
+        navigationView.setCheckedItem(R.id.nav_camera);
     }
 
     @Override
@@ -165,16 +166,19 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fm = getSupportFragmentManager();
             //添加渐隐渐现的动画
             FragmentTransaction ft = fm.beginTransaction();
+            if(from != null) {
+                ft.hide(from);
+            }
             if (!to.isAdded()) {    // 先判断是否被add过
-                ft.hide(from).add(R.id.frame_layout, to, tag).commit(); // 隐藏当前的fragment，add下一个到Activity中
+                ft.add(R.id.frame_layout, to, tag).commit(); // 隐藏当前的fragment，add下一个到Activity中
             } else {
-                ft.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+                ft.show(to).commit(); // 隐藏当前的fragment，显示下一个
             }
         }
     }
 
     @Override
-    public void onListFragmentInteraction(NewsBean item) {
+    public void OnNewsItemClick(NewsBean item) {
 
     }
 
