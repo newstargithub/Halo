@@ -2,7 +2,6 @@ package com.gd.halo.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +12,7 @@ import android.view.View;
 import com.gd.halo.R;
 import com.gd.halo.bean.NewsLabel;
 import com.gd.halo.support.xml.PullParser;
+import com.gd.halo.util.L;
 
 import java.util.List;
 
@@ -22,6 +22,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class TableNewsFragment extends BaseFragment {
+    private static final String TAG = TableNewsFragment.class.getSimpleName();
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -54,6 +55,7 @@ public class TableNewsFragment extends BaseFragment {
      */
     // TODO: Rename and change types and number of parameters
     public static TableNewsFragment newInstance() {
+        L.d(TAG, "newInstance");
         TableNewsFragment fragment = new TableNewsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -77,10 +79,20 @@ public class TableNewsFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViewsAndEvents();
-        initData();
+    protected void initViewsAndEvents() {
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        tab_layout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+    }
+
+    @Override
+    protected void initData() {
+        List<NewsLabel> list = PullParser.parseNewsLabel(mContext);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mNewsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager(), list);
+        mViewPager.setAdapter(mNewsPagerAdapter);
+        setTab();
     }
 
     @Override
@@ -88,23 +100,7 @@ public class TableNewsFragment extends BaseFragment {
         super.onDetach();
     }
 
-    private void initViewsAndEvents() {
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        tab_layout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
-    }
-
-    private void initData() {
-        setTab();
-    }
-
     private void setTab() {
-        List<NewsLabel> list = PullParser.parseNewsLabel(mContext);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mNewsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager(), list);
-        mViewPager.setAdapter(mNewsPagerAdapter);
-
         tab_layout.setVisibility(View.VISIBLE);
         //要先给ViewPager设置Adapter，否则异常：ViewPager does not have a PagerAdapter set
         tab_layout.setupWithViewPager(mViewPager);

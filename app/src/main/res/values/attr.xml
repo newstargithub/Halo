@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--背景颜色-->
+    <attr name="widgetBackground" format="color|reference" />
+
+    <!--文本颜色-->
+    <attr name="textColor" format="color"/>
+    <!--次要文本颜色-->
+    <attr name="secondTextColor" format="color" />
+    <!--提示文本颜色-->
+    <attr name="hintTextColor" format="color" />
+    <!--分割线颜色-->
+    <attr name="dividerColor" format="color" />
+    <!--标题栏颜色-->
+    <attr name="barColor" format="color"/>
+    <!--标题栏文本颜色-->
+    <attr name="barTextColor" format="color"/>
 
 </resources>

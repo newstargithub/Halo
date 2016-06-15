@@ -94,12 +94,12 @@ public abstract class LazyFragment extends Fragment{
         L.d(TAG, "onDestroy");
     }
 
-    protected abstract void initViewsAndEvents();
-
-    private void onFirstUserVisible() {
+    protected void onFirstUserVisible() {
         initViewsAndEvents();   //初始化View和事件
         initData();     //初始化数据
     }
+
+    protected abstract void initViewsAndEvents();
 
     protected abstract void initData();
 
@@ -115,7 +115,7 @@ public abstract class LazyFragment extends Fragment{
         }
     }
 
-    private void onUserVisible() {
+    protected void onUserVisible() {
 
     }
 
@@ -127,7 +127,7 @@ public abstract class LazyFragment extends Fragment{
         }
     }
 
-    private void onUserInvisible() {
+    protected void onUserInvisible() {
 
     }
 
@@ -157,7 +157,7 @@ public abstract class LazyFragment extends Fragment{
         }
     }
 
-    private void onFirstUserInvisible() {
+    protected void onFirstUserInvisible() {
 
     }
 

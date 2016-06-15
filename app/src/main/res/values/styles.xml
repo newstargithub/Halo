@@ -17,4 +17,34 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="DayTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!-- 文本颜色 -->
+        <item name="textColor">@color/black_text</item>
+        <item name="secondTextColor">@color/black_second_text</item>
+        <item name="hintTextColor">@color/black_hint_text</item>
+        <item name="dividerColor">@color/black_divider</item>
+        <!-- 背景色 -->
+        <item name="widgetBackground">@color/white</item>
+        <item name="itemBackground">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="NightTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/black_2A2A2A</item>
+        <item name="colorPrimaryDark">@color/black_3F3F3F</item>
+
+        <!-- 文本颜色 -->
+        <item name="textColor">@color/white_text</item>
+        <item name="secondTextColor">@color/white_second_text</item>
+        <item name="hintTextColor">@color/white_hint_text</item>
+        <item name="dividerColor">@color/white_divider</item>
+        <!-- 背景色 -->
+        <item name="widgetBackground">@color/black_2A2A2A</item>
+        <item name="itemBackground">@color/black_3F3F3F</item>
+        <item name="android:windowBackground">@color/black_2A2A2A</item>
+    </style>
+
 </resources>

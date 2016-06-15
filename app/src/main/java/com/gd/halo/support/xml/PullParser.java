@@ -43,10 +43,8 @@ public class PullParser {
             int eventType = xpp.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_DOCUMENT) {
-                    System.out.println("Start document");
                 } else if (eventType == XmlPullParser.START_TAG) {
                     String name = xpp.getName();    //获取解析器当前指向的元素的名称
-                    System.out.println("Start tag " + name);
                     if (name.equals("site")) {
                         bean = new NewsLabel();
                     } else if (name.equals("url")) {
@@ -59,17 +57,14 @@ public class PullParser {
                         }
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
-                    System.out.println("End tag " + xpp.getName());
                     if (xpp.getName().equals("site")) {
                         list.add(bean);
                         bean = null;
                     }
                 } else if (eventType == XmlPullParser.TEXT) {
-                    System.out.println("Text " + xpp.getText());
                 }
                 eventType = xpp.next();
             }
-            System.out.println("End document");
             return list;
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();

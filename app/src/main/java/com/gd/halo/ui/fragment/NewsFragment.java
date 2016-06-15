@@ -109,6 +109,7 @@ public class NewsFragment extends LazyFragment {
 
     @Override
     protected void initViewsAndEvents() {
+        L.d(TAG, "initViewsAndEvents");
         ButterKnife.bind(this, getRootView());
         // Set the adapter
         if (mColumnCount <= 1) {
@@ -122,6 +123,7 @@ public class NewsFragment extends LazyFragment {
 
     @Override
     protected void initData() {
+        L.d(TAG, "initData");
         getNews();
     }
 
