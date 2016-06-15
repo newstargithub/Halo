@@ -7,8 +7,6 @@
         android:name="com.gd.halo.ui.fragment.NewsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.gd.halo.ui.fragment.ZhiHuFragment"
         tools:listitem="@layout/item_fragment_zhihu"/>

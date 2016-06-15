@@ -80,5 +80,6 @@ public class TableZhiHuFragment extends BaseFragment {
     private void setTab() {
         tab_layout.removeAllTabs();
         tab_layout.setVisibility(View.GONE);
+        tab_layout.setupWithViewPager(null);
     }
 }

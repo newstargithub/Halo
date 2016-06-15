@@ -101,8 +101,10 @@ public class TableNewsFragment extends BaseFragment {
     }
 
     private void setTab() {
+        tab_layout.removeAllTabs();
         tab_layout.setVisibility(View.VISIBLE);
         //要先给ViewPager设置Adapter，否则异常：ViewPager does not have a PagerAdapter set
+        //java.lang.IllegalArgumentException: Tab belongs to a different TabLayout.
         tab_layout.setupWithViewPager(mViewPager);
     }
 
