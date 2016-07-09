@@ -75,6 +75,9 @@ public abstract class LazyFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if(!isLazyLoad()) {
+            init();
+        }
         L.d(TAG, "onActivityCreated");
     }
 
@@ -95,8 +98,18 @@ public abstract class LazyFragment extends Fragment{
     }
 
     protected void onFirstUserVisible() {
+        if(isLazyLoad()) {
+            init();
+        }
+    }
+
+    private void init() {
         initViewsAndEvents();   //初始化View和事件
         initData();     //初始化数据
+    }
+
+    protected boolean isLazyLoad(){
+        return true;
     }
 
     protected abstract void initViewsAndEvents();
@@ -161,8 +174,8 @@ public abstract class LazyFragment extends Fragment{
 
     }
 
-    protected View findViewById(int id) {
-        return rootView.findViewById(id);
+    protected <T> T findViewById(int id) {
+        return (T) rootView.findViewById(id);
     }
 
     /**

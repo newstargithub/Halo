@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.gd.halo.R;
+import com.gd.halo.base.LazyFragment;
 import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
 /**
@@ -16,7 +17,7 @@ import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public abstract class LoadListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class LoadListFragment extends LazyFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -104,6 +105,7 @@ public abstract class LoadListFragment extends BaseFragment implements SwipeRefr
      */
     protected void onRefreshFinish(){
         swipe_refresh_layout.setRefreshing(false);
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -111,13 +113,14 @@ public abstract class LoadListFragment extends BaseFragment implements SwipeRefr
      */
     protected void onRefreshError(){
         swipe_refresh_layout.setRefreshing(false);
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
      * 初始化数据成功
      */
     protected void onInitDataFinish(){
-
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -131,7 +134,7 @@ public abstract class LoadListFragment extends BaseFragment implements SwipeRefr
      * 加载更多成功
      */
     protected void onLoadFinish(){
-
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
