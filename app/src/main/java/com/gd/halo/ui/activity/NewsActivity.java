@@ -23,6 +23,7 @@ import com.gd.halo.bean.NewsBean;
 import com.gd.halo.bean.NewsLabel;
 import com.gd.halo.support.xml.PullParser;
 import com.gd.halo.ui.fragment.NewsFragment;
+import com.gd.halo.util.ToastUtil;
 
 import java.util.List;
 
@@ -128,7 +129,7 @@ public class NewsActivity extends AppCompatActivity implements NewsFragment.OnNe
 
     @Override
     public void OnNewsItemClick(NewsBean item) {
-
+        ToastUtil.showShortToast(mContext, "OnNewsItemClick");
     }
 
     public class NewsPagerAdapter extends FragmentPagerAdapter {

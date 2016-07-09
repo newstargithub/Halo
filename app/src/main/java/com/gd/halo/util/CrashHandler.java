@@ -23,7 +23,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
     private static final String PATH = Environment.getExternalStorageDirectory().getPath()
             + "/Crash/log";
     private static final String FILE_NAME = "crash";
-    private static final String FILE_NAME_SUFFIX = ".trace";
+    private static final String FILE_NAME_SUFFIX = ".txt";
     private static CrashHandler instance;
     private Thread.UncaughtExceptionHandler mDefaultCrashHandler;
     private Context mContext;

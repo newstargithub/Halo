@@ -8,4 +8,12 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:statusBarColor">@color/colorPrimary</item>-->
     </style>
+
+    <style name="Common_CardView" parent="CardView">
+        <item name="cardBackgroundColor">?itemBackground</item>
+        <item name="contentPadding">@dimen/dp_8</item>
+        <item name="cardElevation">@dimen/dp_8</item>
+        <!--在API21（Android L）等级以上拥有属性elevation，意为CardView的Z轴阴影，只有L平台有效。-->
+        <item name="android:elevation">@dimen/dp_8</item>
+    </style>
 </resources>

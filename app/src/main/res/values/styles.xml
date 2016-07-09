@@ -47,4 +47,11 @@
         <item name="android:windowBackground">@color/black_2A2A2A</item>
     </style>
 
+    <style name="Common_CardView" parent="CardView">
+       <!-- 卡片颜色-->
+        <item name="cardBackgroundColor">?itemBackground</item>
+        <item name="contentPadding">@dimen/dp_8</item>
+        <item name="cardElevation">@dimen/dp_8</item>
+    </style>
+
 </resources>

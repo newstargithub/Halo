@@ -49,15 +49,15 @@ public abstract class BaseFragment extends Fragment {
         initData();
     }
 
+    protected abstract int layoutResID();
+
     protected abstract void initViewsAndEvents();
 
     protected abstract void initData();
 
-    protected View findViewById(int id) {
-        return rootView.findViewById(id);
+    protected <T> T findViewById(int id) {
+        return (T) rootView.findViewById(id);
     }
-
-    protected abstract int layoutResID();
 
     @Override
     public void onDetach() {
