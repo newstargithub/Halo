@@ -12,22 +12,13 @@ import com.gd.halo.util.L;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TableZhiHuFragment#newInstance} factory method to
+ * Use the {@link TableAnswersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TableZhiHuFragment extends BaseFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static final String TAG = TableZhiHuFragment.class.getSimpleName();
+public class TableAnswersFragment extends BaseFragment {
+    private static final String TAG = TableAnswersFragment.class.getSimpleName();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private TabLayout tab_layout;
-
-    public TableZhiHuFragment() {
+    public TableAnswersFragment() {
         // Required empty public constructor
     }
 
@@ -35,28 +26,17 @@ public class TableZhiHuFragment extends BaseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TableZhiHuFragment.
+     * @return A new instance of fragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static TableZhiHuFragment newInstance(String param1, String param2) {
+    public static TableAnswersFragment newInstance() {
         L.d(TAG, "newInstance");
-        TableZhiHuFragment fragment = new TableZhiHuFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+        TableAnswersFragment fragment = new TableAnswersFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -74,7 +54,7 @@ public class TableZhiHuFragment extends BaseFragment {
         setTab();
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, ZhiHuFragment.newInstance())
+                .replace(R.id.frame_layout, PostAnswersFragment.newInstance())
                 .commit();
     }
 

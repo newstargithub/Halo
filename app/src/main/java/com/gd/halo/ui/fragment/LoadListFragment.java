@@ -9,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.gd.halo.R;
 import com.gd.halo.base.LazyFragment;
-import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnLoadListClickListener}
  * interface.
  */
 public abstract class LoadListFragment extends LazyFragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -22,13 +21,12 @@ public abstract class LoadListFragment extends LazyFragment implements SwipeRefr
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-
     SwipeRefreshLayout swipe_refresh_layout;
 
     RecyclerView recycler_view;
     private RecyclerView.Adapter mAdapter;
 
-    private OnListFragmentInteractionListener mListener;
+    protected OnLoadListClickListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -81,11 +79,11 @@ public abstract class LoadListFragment extends LazyFragment implements SwipeRefr
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnLoadListClickListener) {
+            mListener = (OnLoadListClickListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnLoadListClickListener");
         }
     }
 
@@ -154,8 +152,7 @@ public abstract class LoadListFragment extends LazyFragment implements SwipeRefr
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+    public interface OnLoadListClickListener {
+        void OnLoadListClick(Object item);
     }
 }

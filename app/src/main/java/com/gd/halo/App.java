@@ -1,6 +1,7 @@
 package com.gd.halo;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.gd.halo.util.CrashHandler;
 import com.lzy.okhttputils.OkHttpUtils;
@@ -11,11 +12,13 @@ import com.lzy.okhttputils.OkHttpUtils;
  */
 public class App extends Application{
 
+    private static Context mAppContext;
     private boolean isDebugMode = true;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mAppContext = this;
         setupExceptionCaught();
         initHttp();
     }
@@ -35,5 +38,9 @@ public class App extends Application{
             CrashHandler instance = CrashHandler.getInstance();
             instance.init(this);
         }
+    }
+
+    public static Context getAppContext() {
+        return mAppContext;
     }
 }

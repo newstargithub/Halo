@@ -10,10 +10,18 @@
     </style>
 
     <style name="Common_CardView" parent="CardView">
+        <!--卡片颜色-->
         <item name="cardBackgroundColor">?itemBackground</item>
+        <!--内边距-->
         <item name="contentPadding">@dimen/dp_8</item>
-        <item name="cardElevation">@dimen/dp_8</item>
+        <!--外边距-->
+        <item name="cardElevation">@dimen/dp_2</item>
         <!--在API21（Android L）等级以上拥有属性elevation，意为CardView的Z轴阴影，只有L平台有效。-->
         <item name="android:elevation">@dimen/dp_8</item>
+        <!--圆角半径-->
+        <item name="cardCornerRadius">@dimen/dp_0</item>
+        <!--If you want CardView to add inner padding on platforms L and after as well, you can set setUseCompatPadding(boolean) to true.-->
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardPreventCornerOverlap">true</item>
     </style>
 </resources>

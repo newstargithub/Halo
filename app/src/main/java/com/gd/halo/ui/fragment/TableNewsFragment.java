@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.gd.halo.MainActivity;
 import com.gd.halo.R;
 import com.gd.halo.bean.NewsLabel;
 import com.gd.halo.support.xml.PullParser;
@@ -41,7 +42,6 @@ public class TableNewsFragment extends BaseFragment {
     private ViewPager mViewPager;
 
     private Context mContext;
-    private TabLayout tab_layout;
 
     public TableNewsFragment() {
         // Required empty public constructor
@@ -82,7 +82,6 @@ public class TableNewsFragment extends BaseFragment {
     protected void initViewsAndEvents() {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        tab_layout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
     }
 
     @Override
@@ -101,11 +100,14 @@ public class TableNewsFragment extends BaseFragment {
     }
 
     private void setTab() {
-        tab_layout.removeAllTabs();
-        tab_layout.setVisibility(View.VISIBLE);
-        //要先给ViewPager设置Adapter，否则异常：ViewPager does not have a PagerAdapter set
-        //java.lang.IllegalArgumentException: Tab belongs to a different TabLayout.
-        tab_layout.setupWithViewPager(mViewPager);
+        if(getActivity() instanceof MainActivity) {
+            TabLayout tab_layout = ((MainActivity) getActivity()).getTabLayout();
+            tab_layout.removeAllTabs();
+            tab_layout.setVisibility(View.VISIBLE);
+            //要先给ViewPager设置Adapter，否则异常：ViewPager does not have a PagerAdapter set
+            //java.lang.IllegalArgumentException: Tab belongs to a different TabLayout.
+            tab_layout.setupWithViewPager(mViewPager);
+        }
     }
 
     public class NewsPagerAdapter extends FragmentPagerAdapter {

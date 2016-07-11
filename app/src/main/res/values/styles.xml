@@ -50,8 +50,16 @@
     <style name="Common_CardView" parent="CardView">
        <!-- 卡片颜色-->
         <item name="cardBackgroundColor">?itemBackground</item>
+        <!--内边距-->
         <item name="contentPadding">@dimen/dp_8</item>
-        <item name="cardElevation">@dimen/dp_8</item>
+        <!--外边距-->
+        <item name="cardElevation">@dimen/dp_2</item>
+        <!--圆角半径-->
+        <item name="cardCornerRadius">@dimen/dp_0</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
     </style>
+
+
 
 </resources>

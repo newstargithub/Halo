@@ -20,7 +20,9 @@ import android.view.View;
 import com.gd.halo.base.BaseActivity;
 import com.gd.halo.bean.NewsBean;
 import com.gd.halo.bean.Posts;
+import com.gd.halo.ui.fragment.LoadListFragment;
 import com.gd.halo.ui.fragment.NewsFragment;
+import com.gd.halo.ui.fragment.TableAnswersFragment;
 import com.gd.halo.ui.fragment.TableNewsFragment;
 import com.gd.halo.ui.fragment.TableZhiHuFragment;
 import com.gd.halo.ui.fragment.ZhiHuFragment;
@@ -31,10 +33,12 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         NewsFragment.OnNewsItemClickListener,
-        ZhiHuFragment.OnZhiHuItemClickListener {
+        ZhiHuFragment.OnZhiHuItemClickListener,
+        LoadListFragment.OnLoadListClickListener {
 
     private static final String FRAGMENT_TAG_NEWS = "news";
     private static final String FRAGMENT_TAG_ZHIHU = "zhihu";
+    private static final String FRAGMENT_TAG_ANSWERS = "answers";
     private Context mContext;
     private Fragment mFragment; //当前显示的Fragment
 
@@ -121,7 +125,7 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_gallery) {
             switchFragment(getTableZhiHuFragment(), FRAGMENT_TAG_ZHIHU);
         } else if (id == R.id.nav_slideshow) {
-
+            switchFragment(getTableAnswersFragment(), FRAGMENT_TAG_ANSWERS);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -153,6 +157,14 @@ public class MainActivity extends BaseActivity
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG_ZHIHU);
         if(fragment == null) {
             fragment = TableZhiHuFragment.newInstance("", "");
+        }
+        return fragment;
+    }
+
+    private Fragment getTableAnswersFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG_ANSWERS);
+        if(fragment == null) {
+            fragment = TableAnswersFragment.newInstance();
         }
         return fragment;
     }
@@ -242,5 +254,14 @@ public class MainActivity extends BaseActivity
     @Override
     public void OnZhiHuItemClick(Posts.PostsBean item) {
 
+    }
+
+    @Override
+    public void OnLoadListClick(Object item) {
+
+    }
+
+    public TabLayout getTabLayout() {
+        return tab_layout;
     }
 }
