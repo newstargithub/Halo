@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import com.gd.halo.R;
-import com.gd.halo.base.LazyFragment;
+import com.gd.halo.base.GLazyFragment;
 import com.gd.halo.bean.Posts;
 import com.gd.halo.support.json.GsonWrapper;
 import com.gd.halo.ui.adapter.ZhiHuAdapter;
@@ -21,9 +21,9 @@ import com.lzy.okhttputils.callback.AbsCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Request;
+import okhttp3.Call;
 import okhttp3.Response;
 
 /**
@@ -32,7 +32,7 @@ import okhttp3.Response;
  * Activities containing this fragment MUST implement the {@link OnZhiHuItemClickListener}
  * interface.
  */
-public class ZhiHuFragment extends LazyFragment {
+public class ZhiHuFragment extends GLazyFragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -42,7 +42,7 @@ public class ZhiHuFragment extends LazyFragment {
     private OnZhiHuItemClickListener mListener;
     private ZhiHuAdapter mListAdapter;
     private List<Posts.PostsBean> mList = new ArrayList<>();
-    @Bind(R.id.list)
+    @BindView(R.id.list)
     RecyclerView mRecyclerView;
 
     // TODO: Customize parameter initialization
@@ -142,7 +142,7 @@ public class ZhiHuFragment extends LazyFragment {
             }
 
             @Override
-            public void onResponse(boolean isFromCache, Posts posts, Request request, @Nullable Response response) {
+            public void onSuccess(Posts posts, Call call, Response response) {
                 if(posts.getPosts() != null) {
                     mList.addAll(posts.getPosts());
                     mListAdapter.notifyDataSetChanged();

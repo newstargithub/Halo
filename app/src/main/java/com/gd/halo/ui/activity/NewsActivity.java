@@ -27,7 +27,7 @@ import com.gd.halo.util.ToastUtil;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class NewsActivity extends AppCompatActivity implements NewsFragment.OnNewsItemClickListener {
@@ -49,7 +49,7 @@ public class NewsActivity extends AppCompatActivity implements NewsFragment.OnNe
      */
     private ViewPager mViewPager;
 
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout tab_layout;
     private Context mContext;
 

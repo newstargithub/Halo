@@ -7,7 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
+   <!-- <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:name="com.gd.halo.ui.fragment.LoadListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.gd.halo.ui.fragment.LoadListFragment"
+        tools:listitem="@layout/fragment_loaditem" />-->
+
+    <com.gd.halo.ui.widget.LoadRecyclerView
         android:id="@+id/recycler_view"
         android:name="com.gd.halo.ui.fragment.LoadListFragment"
         android:layout_width="match_parent"

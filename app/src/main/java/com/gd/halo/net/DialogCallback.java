@@ -8,9 +8,6 @@ import android.view.Window;
 import com.lzy.okhttputils.callback.AbsCallback;
 import com.lzy.okhttputils.request.BaseRequest;
 
-import okhttp3.Call;
-import okhttp3.Response;
-
 /**
  * Created by zhouxin on 2016/6/2.
  * Description: 对于网络请求是否需要弹出进度对话框
@@ -40,8 +37,8 @@ public abstract class DialogCallback<T> extends AbsCallback<T> {
     }
 
     @Override
-    public void onAfter(boolean isFromCache, @Nullable T t, Call call, @Nullable Response response, @Nullable Exception e) {
-        super.onAfter(isFromCache, t, call, response, e);
+    public void onAfter(@Nullable T t, @Nullable Exception e) {
+        super.onAfter(t, e);
         //网络请求结束后关闭对话框
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();

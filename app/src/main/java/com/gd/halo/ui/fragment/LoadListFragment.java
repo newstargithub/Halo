@@ -8,7 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.gd.halo.R;
-import com.gd.halo.base.LazyFragment;
+import com.gd.halo.base.GLazyFragment;
+import com.gd.halo.ui.widget.LoadRecyclerView;
 
 /**
  * A fragment representing a list of Items.
@@ -16,14 +17,14 @@ import com.gd.halo.base.LazyFragment;
  * Activities containing this fragment MUST implement the {@link OnLoadListClickListener}
  * interface.
  */
-public abstract class LoadListFragment extends LazyFragment implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class LoadListFragment extends GLazyFragment implements SwipeRefreshLayout.OnRefreshListener, LoadRecyclerView.OnLoadMoreListener {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
     SwipeRefreshLayout swipe_refresh_layout;
 
-    RecyclerView recycler_view;
+    LoadRecyclerView recycler_view;
     private RecyclerView.Adapter mAdapter;
 
     protected OnLoadListClickListener mListener;
@@ -56,6 +57,9 @@ public abstract class LoadListFragment extends LazyFragment implements SwipeRefr
         } else {
             recycler_view.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        swipe_refresh_layout.setEnabled(canRefresh());
+        recycler_view.setCanLoadMore(canLoad());
+        recycler_view.setOnLoadMoreListener(this);
         mAdapter = getAdapter();
         recycler_view.setAdapter(mAdapter);
     }
@@ -133,12 +137,18 @@ public abstract class LoadListFragment extends LazyFragment implements SwipeRefr
      */
     protected void onLoadFinish(){
         mAdapter.notifyDataSetChanged();
+        recycler_view.loadMoreComplete();
     }
 
     /**
      * 加载更多失败
      */
     protected void onLoadError(){
+        recycler_view.loadMoreError();
+    }
+
+    @Override
+    public void onLoadMore() {
 
     }
 

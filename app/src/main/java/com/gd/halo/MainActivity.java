@@ -1,10 +1,10 @@
 package com.gd.halo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +20,7 @@ import android.view.View;
 import com.gd.halo.base.BaseActivity;
 import com.gd.halo.bean.NewsBean;
 import com.gd.halo.bean.Posts;
+import com.gd.halo.ui.activity.CarrierActivity;
 import com.gd.halo.ui.fragment.LoadListFragment;
 import com.gd.halo.ui.fragment.NewsFragment;
 import com.gd.halo.ui.fragment.TableAnswersFragment;
@@ -27,7 +28,7 @@ import com.gd.halo.ui.fragment.TableNewsFragment;
 import com.gd.halo.ui.fragment.TableZhiHuFragment;
 import com.gd.halo.ui.fragment.ZhiHuFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActivity
     private Context mContext;
     private Fragment mFragment; //当前显示的Fragment
 
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout tab_layout;
 
     @Override
@@ -59,8 +60,10 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Intent intent = new Intent(mContext, CarrierActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -79,6 +82,26 @@ public class MainActivity extends BaseActivity
         navigationView.setCheckedItem(R.id.nav_camera);
         //没有通知到onNavigationItemSelected，手动设置默认
         switchFragment(getTableNewsFragment(), FRAGMENT_TAG_NEWS);
+    }
+
+    @Override
+    protected void initViewsAndEvents() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return null;
+    }
+
+    @Override
+    protected boolean isRegisterEvent() {
+        return false;
     }
 
     @Override

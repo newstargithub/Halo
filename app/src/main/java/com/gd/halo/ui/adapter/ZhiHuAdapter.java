@@ -14,7 +14,7 @@ import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -62,11 +62,11 @@ public class ZhiHuAdapter extends RecyclerView.Adapter<ZhiHuAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        @Bind(R.id.title)
+        @BindView(R.id.title)
         public TextView title;
-        @Bind(R.id.content)
+        @BindView(R.id.content)
         public TextView content;
-        @Bind(R.id.count)
+        @BindView(R.id.count)
         public TextView count;
         public Posts.PostsBean mItem;
 

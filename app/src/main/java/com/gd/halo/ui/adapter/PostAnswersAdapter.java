@@ -17,7 +17,7 @@ import com.gd.halo.util.glide.GlideCircleTransform;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PostAnswersAdapter extends RecyclerView.Adapter<PostAnswersAdapter.ViewHolder> {
@@ -60,15 +60,15 @@ public class PostAnswersAdapter extends RecyclerView.Adapter<PostAnswersAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        @Bind(R.id.avatar)
+        @BindView(R.id.avatar)
         public ImageView avatar;
-        @Bind(R.id.author_name)
+        @BindView(R.id.author_name)
         public TextView author_name;
-        @Bind(R.id.vote)
+        @BindView(R.id.vote)
         public TextView vote;
-        @Bind(R.id.title)
+        @BindView(R.id.title)
         public TextView title;
-        @Bind(R.id.summary)
+        @BindView(R.id.summary)
         public TextView summary;
         public PostAnswers.AnswersBean mItem;
 

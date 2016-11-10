@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.gd.halo.R;
-import com.gd.halo.base.LazyFragment;
+import com.gd.halo.base.GLazyFragment;
 import com.gd.halo.bean.NewsBean;
 import com.gd.halo.net.DialogCallback;
 import com.gd.halo.support.xml.SAXNewsParse;
@@ -20,10 +20,9 @@ import com.lzy.okhttputils.cache.CacheMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -32,7 +31,7 @@ import okhttp3.Response;
  * Activities containing this fragment MUST implement the {@link OnNewsItemClickListener}
  * interface.
  */
-public class NewsFragment extends LazyFragment {
+public class NewsFragment extends GLazyFragment {
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -47,7 +46,7 @@ public class NewsFragment extends LazyFragment {
     private OnNewsItemClickListener mListener;
     private NewsAdapter mNewsAdapter;
     private List<NewsBean> mList = new ArrayList<>();
-    @Bind(R.id.list)
+    @BindView(R.id.list)
     RecyclerView mRecyclerView;
 
     // TODO: Customize parameter initialization
@@ -152,7 +151,7 @@ public class NewsFragment extends LazyFragment {
             }
 
             @Override
-            public void onResponse(boolean isFromCache, List<NewsBean> newsBeen, Request request, @Nullable Response response) {
+            public void onSuccess(List<NewsBean> newsBeen, Call call, Response response) {
                 if (newsBeen != null) {
                     mList.addAll(newsBeen);
                     mNewsAdapter.notifyDataSetChanged();
@@ -160,8 +159,8 @@ public class NewsFragment extends LazyFragment {
             }
 
             @Override
-            public void onError(boolean isFromCache, Call call, @Nullable Response response, @Nullable Exception e) {
-                super.onError(isFromCache, call, response, e);
+            public void onError(Call call, Response response, Exception e) {
+                super.onError(call, response, e);
             }
         });
     }

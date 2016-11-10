@@ -23,6 +23,9 @@
 
     <color name="black_2A2A2A">#2A2A2A</color>
     <color name="black_3F3F3F">#3F3F3F</color>
+    <color name="refresh_progress_1">#e91e63</color>
+    <color name="refresh_progress_2">#00b0ff</color>
+    <color name="refresh_progress_3">@color/colorPrimary</color>
 
 
 </resources>

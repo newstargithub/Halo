@@ -11,11 +11,11 @@ import android.widget.ListView;
 
 import com.gd.halo.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TableActivity extends AppCompatActivity {
-    @Bind(R.id.list_view)
+    @BindView(R.id.list_view)
     ListView list_view;
     private Context mContext;
 

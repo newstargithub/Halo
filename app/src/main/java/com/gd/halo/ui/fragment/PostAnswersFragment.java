@@ -1,6 +1,5 @@
 package com.gd.halo.ui.fragment;
 
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Locale;
 
 import okhttp3.Call;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -67,21 +65,47 @@ public class PostAnswersFragment extends LoadListFragment{
         .cacheMode(CacheMode.DEFAULT)
         .execute(new ZhihuJsonCallback<PostAnswers>(PostAnswers.class) {
             @Override
-            public void onResponse(boolean isFromCache, PostAnswers postAnswers, Request request, @Nullable Response response) {
+            public void onSuccess(PostAnswers postAnswers, Call call, Response response) {
                 mAnswers.clear();
                 mAnswers.addAll(postAnswers.getAnswers());
                 onRefreshFinish();
             }
 
             @Override
-            public void onError(boolean isFromCache, Call call, @Nullable Response response, @Nullable Exception e) {
-                super.onError(isFromCache, call, response, e);
-                if(e != null) {
-                    showToast(e.getMessage());
-                }
+            public void onError(Call call, Response response, Exception e) {
+                super.onError(call, response, e);
+                showToast(e.getMessage());
                 onRefreshError();
             }
         });
+    }
+
+    @Override
+    public void onLoadMore() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        String format = sdf.format(calendar.getTime());
+        String url = API.GET_POST_ANSWERS + "/" + format + "/yesterday";
+        String cacheKey = API.GET_POST_ANSWERS;
+        OkHttpUtils.get(url)
+                .tag(this)
+                .cacheKey(cacheKey)
+                .cacheMode(CacheMode.DEFAULT)
+                .execute(new ZhihuJsonCallback<PostAnswers>(PostAnswers.class) {
+                    @Override
+                    public void onSuccess(PostAnswers postAnswers, Call call, Response response) {
+                        mAnswers.addAll(postAnswers.getAnswers());
+                        onLoadFinish();
+                    }
+
+                    @Override
+                    public void onError(Call call, Response response, Exception e) {
+                        super.onError(call, response, e);
+                        showToast(e.getMessage());
+                        onLoadError();
+                    }
+                });
     }
 
     public static Fragment newInstance() {

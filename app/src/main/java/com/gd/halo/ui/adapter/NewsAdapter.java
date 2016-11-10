@@ -13,7 +13,7 @@ import com.gd.halo.ui.fragment.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -61,11 +61,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        @Bind(R.id.title)
+        @BindView(R.id.title)
         public TextView mTitleView;
-        @Bind(R.id.content)
+        @BindView(R.id.content)
         public TextView mContentView;
-        @Bind(R.id.time)
+        @BindView(R.id.time)
         public TextView mTimeView;
         public NewsBean mItem;
 

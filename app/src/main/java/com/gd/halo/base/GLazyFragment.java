@@ -17,7 +17,7 @@ import com.gd.halo.util.ToastUtil;
  * Created by zhouxin on 2016/6/3.
  * Description:
  */
-public abstract class LazyFragment extends Fragment{
+public abstract class GLazyFragment extends Fragment{
     /**
      * Log tag
      */

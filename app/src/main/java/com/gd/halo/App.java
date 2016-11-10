@@ -13,7 +13,7 @@ import com.lzy.okhttputils.OkHttpUtils;
 public class App extends Application{
 
     private static Context mAppContext;
-    private boolean isDebugMode = true;
+    private boolean isDebugMode = BuildConfig.DEBUG;
 
     @Override
     public void onCreate() {
