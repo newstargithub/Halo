@@ -1,5 +1,7 @@
 package com.gd.halo.model;
 
+import com.gd.halo.bean.Jztk;
+
 import java.util.List;
 
 import rx.Observable;
@@ -10,6 +12,10 @@ import rx.Observable;
  */
 public class DatabaseHelper {
     public Observable saveCarriers(List list) {
+        return null;
+    }
+
+    public Observable<? extends List<Jztk>> saveJztks(List<Jztk> jztks) {
         return null;
     }
 }

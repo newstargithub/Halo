@@ -1,4 +1,6 @@
-package com.gd.halo.bean;
+package com.gd.halo.bean.data;
+
+import com.gd.halo.bean.Carrier;
 
 import java.util.List;
 

@@ -1,8 +1,11 @@
 package com.gd.halo.model;
 
 import com.gd.halo.api.CarrierApi;
+import com.gd.halo.api.JztkApi;
 import com.gd.halo.bean.Carrier;
-import com.gd.halo.bean.CarrierData;
+import com.gd.halo.bean.Jztk;
+import com.gd.halo.bean.data.CarrierData;
+import com.gd.halo.bean.data.JztkData;
 import com.lzy.okhttputils.interceptor.LoggerInterceptor;
 
 import java.util.List;
@@ -22,10 +25,12 @@ import rx.functions.Func1;
  Retrofit services：执行访问REST API，我们现在使用Retrofit来代替Volley，因为它天生支持RxJava。而且也更好用。
  */
 public class DataManager {
-    private static final String BASE_URL = "http://v.juhe.cn/expressonline/";
+    private static final String BASE_URL_Carrier = "http://v.juhe.cn/expressonline/";
+    private static final String BASE_URL_Jztk = "http://api2.juheapi.com/";
     private static volatile DataManager sInstance;
     private DatabaseHelper mDatabaseHelper;
-    private CarrierApi mRetrofitService;
+    private CarrierApi mCarrierService;
+    private final JztkApi mJztkService;
 
     public static DataManager getInstance() {
         synchronized (DataManager.class) {
@@ -42,21 +47,42 @@ public class DataManager {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(new LoggerInterceptor(null, true));
         OkHttpClient httpClient = builder.build();
-
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit.Builder builderRetrofit = new Retrofit.Builder()
                 .client(httpClient)
-                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        mRetrofitService = retrofit.create(CarrierApi.class);
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+        mCarrierService = builderRetrofit.baseUrl(BASE_URL_Carrier).build().create(CarrierApi.class);
+        mJztkService = builderRetrofit.baseUrl(BASE_URL_Jztk).build().create(JztkApi.class);
     }
 
     public Observable<List<Carrier>> getCarriers() {
-        return mRetrofitService.loadCarriers().map(new Func1<CarrierData, List<Carrier>>() {
+        return mCarrierService.loadCarriers().map(new Func1<CarrierData, List<Carrier>>() {
             @Override
             public List<Carrier> call(CarrierData carrierData) {
                 return carrierData.result;
+            }
+        });
+    }
+
+    public Observable<List<Jztk>> getAllJztk(String subject, String model) {
+        return mJztkService.query(subject, model, JztkData.TESTTYPE_ORDER).map(new Func1<JztkData, List<Jztk>>() {
+            @Override
+            public List<Jztk> call(JztkData jztkData) {
+                return jztkData.result;
+            }
+        }).concatMap(new Func1<List<Jztk>, Observable<? extends List<Jztk>>>() {
+            @Override
+            public Observable<? extends List<Jztk>> call(List<Jztk> jztks) {
+                return mDatabaseHelper.saveJztks(jztks);
+            }
+        });
+    }
+
+    public Observable<List<Jztk>> getRandJztk(String subject, String model) {
+        return mJztkService.query(subject, model, JztkData.TESTTYPE_RAND).map(new Func1<JztkData, List<Jztk>>() {
+            @Override
+            public List<Jztk> call(JztkData jztkData) {
+                return jztkData.result;
             }
         });
     }

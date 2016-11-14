@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.gd.halo.R;
 import com.gd.halo.base.BaseToolbarActivity;
-import com.gd.halo.ui.fragment.CarrierListFragment;
+import com.gd.halo.ui.fragment.JztkFragment;
 
 public class CarrierActivity extends BaseToolbarActivity {
 
@@ -18,9 +18,12 @@ public class CarrierActivity extends BaseToolbarActivity {
     @Override
     protected void initViewsAndEvents() {
         super.initViewsAndEvents();
-        getSupportFragmentManager().beginTransaction()
+        /*getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout, new CarrierListFragment()).commit();
-        setActionBarTitle(R.string.carrier);
+        setActionBarTitle(R.string.carrier);*/
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new JztkFragment()).commit();
+        setActionBarTitle(R.string.jztk);
     }
 
     @Override

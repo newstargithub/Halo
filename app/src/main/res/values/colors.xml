@@ -28,4 +28,7 @@
     <color name="refresh_progress_3">@color/colorPrimary</color>
 
 
+    <drawable name="corner_white_disable_bg">@color/white_hint_text</drawable>
+    <drawable name="corner_white_light_bg">@color/white_divider</drawable>
+    <drawable name="corner_white_normal_bg">@color/white_second_text</drawable>
 </resources>

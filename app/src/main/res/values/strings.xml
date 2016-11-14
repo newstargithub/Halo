@@ -103,4 +103,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="carrier">快递公司</string>
+    <string name="jztk">驾照题库</string>
+    <string name="previous">上一题</string>
+    <string name="next">下一题</string>
+    <string name="has_timed_out">时间到</string>
+    <string name="count_down_time">请于%s内完成作答</string>
 </resources>
