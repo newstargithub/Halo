@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gd.halo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".App"
@@ -42,7 +42,8 @@
             android:label="@string/title_activity_news"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.activity.TableActivity" />
-        <activity android:name=".ui.activity.CarrierActivity"/>
+        <activity android:name=".ui.activity.CarrierActivity" />
+        <activity android:name=".ui.activity.JzMainActivity"></activity>
     </application>
 
 </manifest>

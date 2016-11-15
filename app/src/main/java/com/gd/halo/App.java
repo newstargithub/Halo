@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.gd.halo.util.CrashHandler;
+import com.litesuits.orm.LiteOrm;
 import com.lzy.okhttputils.OkHttpUtils;
 
 /**
@@ -12,8 +13,10 @@ import com.lzy.okhttputils.OkHttpUtils;
  */
 public class App extends Application{
 
+    private static final String DB_NAME = "jztk.db";
     private static Context mAppContext;
     private boolean isDebugMode = BuildConfig.DEBUG;
+    public static LiteOrm sDb;
 
     @Override
     public void onCreate() {
@@ -21,6 +24,10 @@ public class App extends Application{
         mAppContext = this;
         setupExceptionCaught();
         initHttp();
+        sDb = LiteOrm.newSingleInstance(this, DB_NAME);
+        if (BuildConfig.DEBUG) {
+            sDb.setDebugged(true);
+        }
     }
 
     private void initHttp() {

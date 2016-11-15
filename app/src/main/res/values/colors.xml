@@ -21,8 +21,9 @@
     <color name="white">#FFFFFF</color>
     <color name="gray">#B3FFFFFF</color>
 
-    <color name="black_2A2A2A">#2A2A2A</color>
-    <color name="black_3F3F3F">#3F3F3F</color>
+    <color name="black_colorPrimary">#101417</color>
+    <color name="black_itemBackground">#1B1F22</color>
+    <color name="black_1A1B1C">#1A1B1C</color>
     <color name="refresh_progress_1">#e91e63</color>
     <color name="refresh_progress_2">#00b0ff</color>
     <color name="refresh_progress_3">@color/colorPrimary</color>

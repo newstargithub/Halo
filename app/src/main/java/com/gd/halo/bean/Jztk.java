@@ -1,11 +1,15 @@
 package com.gd.halo.bean;
 
+import com.litesuits.orm.db.annotation.Column;
+import com.litesuits.orm.db.annotation.Table;
+
 /**
  * Created by zhouxin on 2016/11/11.
  * Description: 驾照题库
  * 请注意:	当四个选项都为空的时候表示判断题,item1:正确 item2:错误,请开发者自行判断!
  *
  */
+@Table("question")
 public class Jztk {
 
     /**
@@ -19,15 +23,23 @@ public class Jztk {
      * explains : 你看那个P字上边还有个遮挡，说明是室内的，如果没有上边那个遮挡就是露天停车场。
      * url : http://images.juheapi.com/jztk/c1c2subject1/14.jpg
      */
-
+    @Column("id")
     private int id;
+    @Column("question")
     private String question;    //问题
+    @Column("answer")
     private String answer;      //答案
+    @Column("item1")
     private String item1;
+    @Column("item2")
     private String item2;
+    @Column("item3")
     private String item3;
+    @Column("item4")
     private String item4;
+    @Column("explains")
     private String explains;    //答案解释
+    @Column("url")
     private String url;
 
     public String myAnswer;

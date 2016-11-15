@@ -44,6 +44,8 @@ import butterknife.OnClick;
 /**
  * Created by zhouxin on 2016/11/11.
  * Description:
+ * 待做功能：选项样式，指示栏标记答题正确错误未答，时间到答完结果展示，保存答题记录（保存答题时间，错误）
+ * 同步所有题目到本地，随机选择未答题目，回顾错误题目
  */
 public class JztkFragment extends GMVPBaseFragment<JztkView, JztkPresenter> implements JztkView {
     private static final String[] ITEM_FLAG = {"A", "B", "C", "D"};
@@ -244,7 +246,7 @@ public class JztkFragment extends GMVPBaseFragment<JztkView, JztkPresenter> impl
     }
 
     private void addRadioButton(RadioGroup radioGroup, int id, String flag) {
-        RadioButton rb = (RadioButton) LayoutInflater.from(mContext).inflate(R.layout.item_jztk, radioGroup, false);
+        RadioButton rb = (RadioButton) LayoutInflater.from(mContext).inflate(R.layout.item_jktk_radiobutton, radioGroup, false);
         rb.setText(flag);
         rb.setId(id);
         radioGroup.addView(rb);

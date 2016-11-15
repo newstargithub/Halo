@@ -19,7 +19,7 @@
 
     <style name="DayTheme" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
 
         <!-- 文本颜色 -->
         <item name="textColor">@color/black_text</item>
@@ -33,18 +33,18 @@
     </style>
 
     <style name="NightTheme" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/black_2A2A2A</item>
-        <item name="colorPrimaryDark">@color/black_3F3F3F</item>
+        <item name="colorPrimary">@color/black_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black_colorPrimary</item>
 
         <!-- 文本颜色 -->
-        <item name="textColor">@color/white_text</item>
-        <item name="secondTextColor">@color/white_second_text</item>
-        <item name="hintTextColor">@color/white_hint_text</item>
+        <item name="textColor">#CED1D5</item>
+        <item name="secondTextColor">#A2A6A9</item>
+        <item name="hintTextColor">#5A5B5E</item>
         <item name="dividerColor">@color/white_divider</item>
         <!-- 背景色 -->
-        <item name="widgetBackground">@color/black_2A2A2A</item>
-        <item name="itemBackground">@color/black_3F3F3F</item>
-        <item name="android:windowBackground">@color/black_2A2A2A</item>
+        <item name="widgetBackground">@color/black_itemBackground</item>
+        <item name="itemBackground">@color/black_itemBackground</item>
+        <item name="android:windowBackground">@color/black_itemBackground</item>
     </style>
 
     <style name="Common_CardView" parent="CardView">
@@ -53,7 +53,7 @@
         <!--内边距-->
         <item name="contentPadding">@dimen/dp_8</item>
         <!--外边距-->
-        <item name="cardElevation">@dimen/dp_2</item>
+        <item name="cardElevation">@dimen/dp_4</item>
         <!--圆角半径-->
         <item name="cardCornerRadius">@dimen/dp_0</item>
         <item name="cardUseCompatPadding">false</item>
